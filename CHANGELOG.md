@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Enable web and provide better documentation
+
 ## 0.0.3
 
 * Add sample
