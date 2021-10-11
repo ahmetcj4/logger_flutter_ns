@@ -1,8 +1,7 @@
 name: logger_flutter_ns
 description: A simple plug & play flutter logger console.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/ahmetcj4/logger_flutter_ns/
-documentation: https://github.com/ahmetcj4/logger_flutter_ns/README.md
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
