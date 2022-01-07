@@ -1,3 +1,8 @@
+## 0.0.5
+
+* Increase method count to 4
+* Update dependencies
+
 ## 0.0.4
 
 * Enable web and provide better documentation
