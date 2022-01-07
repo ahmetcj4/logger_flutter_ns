@@ -5,7 +5,7 @@ ListQueue<OutputEvent> _outputEventBuffer = ListQueue();
 Function(OutputEvent)? _outputListener;
 final logger = Logger(
   filter: _Filter(),
-  printer: PrettyPrinter(printTime: true),
+  printer: PrettyPrinter(printTime: true, methodCount: 4),
   output: _ConsoleOutput(),
 );
 
