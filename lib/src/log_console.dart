@@ -5,9 +5,16 @@ ListQueue<OutputEvent> _outputEventBuffer = ListQueue();
 Function(OutputEvent)? _outputListener;
 final logger = Logger(
   filter: _Filter(),
-  printer: PrettyPrinter(printTime: true, methodCount: 4),
+  printer: HybridPrinter(_getPrinter(), error: _getPrinter(methodCount: 4)),
   output: _ConsoleOutput(),
 );
+
+LogPrinter _getPrinter({int methodCount = 0}) => PrettyPrinter(
+      printEmojis: false,
+      printTime: true,
+      methodCount: methodCount,
+      colors: false,
+    );
 
 class _Filter extends LogFilter {
   @override
@@ -19,7 +26,7 @@ class _ConsoleOutput extends LogOutput {
   void output(OutputEvent event) {
     _outputEventBuffer.add(event);
     _outputListener?.call(event);
-    event.lines.forEach(log);
+    log(event.lines.fold('', (p, e) => '$p\n$e'));
   }
 }
 
@@ -108,10 +115,14 @@ class _LogConsoleState extends State<LogConsole> {
       debugShowCheckedModeBanner: false,
       theme: widget.dark
           ? ThemeData(
-              brightness: Brightness.dark, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.blueGrey),
+              brightness: Brightness.dark,
+              colorScheme:
+                  ColorScheme.fromSwatch().copyWith(secondary: Colors.blueGrey),
             )
           : ThemeData(
-              brightness: Brightness.light, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.lightBlueAccent),
+              brightness: Brightness.light,
+              colorScheme: ColorScheme.fromSwatch()
+                  .copyWith(secondary: Colors.lightBlueAccent),
             ),
       home: Scaffold(
         body: SafeArea(
