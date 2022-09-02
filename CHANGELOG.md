@@ -1,3 +1,10 @@
+## 0.0.7
+
+* remove colors since it fails to convert in file generation
+* print methods only if log type is error
+* Update dependencies
+
+
 ## 0.0.6
 
 * Update dependencies 
