@@ -1,3 +1,7 @@
+## 0.0.8
+
+* update dependencies
+
 ## 0.0.7
 
 * remove colors since it fails to convert in file generation
