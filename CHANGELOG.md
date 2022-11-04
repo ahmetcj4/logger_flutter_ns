@@ -1,6 +1,7 @@
 ## 0.0.8
 
 * update dependencies
+* simplify logs
 
 ## 0.0.7
 

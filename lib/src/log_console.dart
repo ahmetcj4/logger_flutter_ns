@@ -5,16 +5,12 @@ ListQueue<OutputEvent> _outputEventBuffer = ListQueue();
 Function(OutputEvent)? _outputListener;
 final logger = Logger(
   filter: _Filter(),
-  printer: HybridPrinter(_getPrinter(), error: _getPrinter(methodCount: 4)),
+  printer: HybridPrinter(
+    SimplePrinter(printTime: true, colors: false),
+    error: PrettyPrinter(printEmojis: false, printTime: true, methodCount: 4, colors: false),
+  ),
   output: _ConsoleOutput(),
 );
-
-LogPrinter _getPrinter({int methodCount = 0}) => PrettyPrinter(
-      printEmojis: false,
-      printTime: true,
-      methodCount: methodCount,
-      colors: false,
-    );
 
 class _Filter extends LogFilter {
   @override
@@ -72,8 +68,7 @@ class _LogConsoleState extends State<LogConsole> {
 
     _scrollController.addListener(() {
       if (!_scrollListenerEnabled) return;
-      var scrolledToBottom = _scrollController.offset >=
-          _scrollController.position.maxScrollExtent;
+      var scrolledToBottom = _scrollController.offset >= _scrollController.position.maxScrollExtent;
       setState(() {
         _followBottom = scrolledToBottom;
       });
@@ -116,13 +111,11 @@ class _LogConsoleState extends State<LogConsole> {
       theme: widget.dark
           ? ThemeData(
               brightness: Brightness.dark,
-              colorScheme:
-                  ColorScheme.fromSwatch().copyWith(secondary: Colors.blueGrey),
+              colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.blueGrey),
             )
           : ThemeData(
               brightness: Brightness.light,
-              colorScheme: ColorScheme.fromSwatch()
-                  .copyWith(secondary: Colors.lightBlueAccent),
+              colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.lightBlueAccent),
             ),
       home: Scaffold(
         body: SafeArea(
