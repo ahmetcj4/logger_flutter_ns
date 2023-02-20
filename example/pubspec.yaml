@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  logger_flutter_ns: ^0.0.8
+  logger_flutter_ns: ^0.1.0
 
 dev_dependencies:
   flutter_test:

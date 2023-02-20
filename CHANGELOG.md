@@ -1,3 +1,7 @@
+## 0.1.0
+
+* print only current time
+
 ## 0.0.8
 
 * update dependencies
