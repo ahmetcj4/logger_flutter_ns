@@ -6,7 +6,7 @@ Function(OutputEvent)? _outputListener;
 final logger = Logger(
   filter: _Filter(),
   printer: HybridPrinter(
-    SimplePrinter(printTime: true, colors: false),
+    SimplerPrinter(),
     error: PrettyPrinter(printEmojis: false, printTime: true, methodCount: 4, colors: false),
   ),
   output: _ConsoleOutput(),
